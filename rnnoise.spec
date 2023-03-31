@@ -5,7 +5,7 @@
 Summary:	Recurrent neural network for audio noise reduction
 Name:		rnnoise
 Version:	0.0.1.20210621
-Release:	1
+Release:	2
 License:	BSD
 Group:		System/Libraries
 # also https://github.com/xiph/rnnoise
