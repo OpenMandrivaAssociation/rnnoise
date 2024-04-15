@@ -13,6 +13,7 @@ Url:		https://gitlab.xiph.org/xiph/rnnoise
 Source0:	https://gitlab.xiph.org/xiph/rnnoise/-/archive/v%{version}/rnnoise-v%{version}.tar.bz2
 BuildRequires:	autoconf automake libtool make
 BuildRequires:	doxygen graphviz
+BuildRequires:	gettext
 
 %description
 %summary
