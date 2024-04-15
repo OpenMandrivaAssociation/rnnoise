@@ -33,7 +33,7 @@ Requires:	%{libname} = %{version}-%{release}
 This package includes the development files for %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -n %{name}-v%{version} -p1
 autoreconf -fiv
 %configure \
 	--enable-examples-build
