@@ -42,8 +42,7 @@ This package includes the development files for %{name}.
 %build
 cp -p %{SOURCE1} .
 autoreconf -fiv
-%configure \
-	--enable-examples-build
+%configure
 
 %make_build
 
