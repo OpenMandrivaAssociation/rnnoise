@@ -4,15 +4,20 @@
 
 Summary:	Recurrent neural network for audio noise reduction
 Name:		rnnoise
-Version:	0.0.1.20210621
-Release:	2
+Version:	0.2
+Release:	1
 License:	BSD
 Group:		System/Libraries
 # also https://github.com/xiph/rnnoise
 Url:		https://gitlab.xiph.org/xiph/rnnoise
-Source0:	https://gitlab.xiph.org/xiph/rnnoise/-/archive/master/rnnoise-master.tar.bz2
+Source0:	https://gitlab.xiph.org/xiph/rnnoise/-/archive/v%{version}/rnnoise-v%{version}.tar.bz2
+# Data vesion should be with same number as in /%{name}-%{version}/model_version
+Source1:	https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz
+# PATCH https://github.com/xiph/rnnoise/issues/222
+Patch0:         372f7b4.patch
 BuildRequires:	autoconf automake libtool make
 BuildRequires:	doxygen graphviz
+BuildRequires:	gettext
 
 %description
 %summary
@@ -33,12 +38,12 @@ Requires:	%{libname} = %{version}-%{release}
 This package includes the development files for %{name}.
 
 %prep
-%setup -q -n %{name}-master
-autoreconf -fiv
-%configure \
-	--enable-examples-build
-
+%autosetup -n %{name}-v%{version} -p1
 %build
+cp -p %{SOURCE1} .
+./autogen.sh
+%configure
+
 %make_build
 
 %install
