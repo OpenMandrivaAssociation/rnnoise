@@ -41,7 +41,7 @@ This package includes the development files for %{name}.
 %autosetup -n %{name}-v%{version} -p1
 %build
 cp -p %{SOURCE1} .
-autoreconf -fiv
+./autogen.sh
 %configure
 
 %make_build
