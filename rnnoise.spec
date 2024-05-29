@@ -11,6 +11,10 @@ Group:		System/Libraries
 # also https://github.com/xiph/rnnoise
 Url:		https://gitlab.xiph.org/xiph/rnnoise
 Source0:	https://gitlab.xiph.org/xiph/rnnoise/-/archive/v%{version}/rnnoise-v%{version}.tar.bz2
+# Data vesion should be with same number as in /%{name}-%{version}/model_version
+Source1:	https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz
+# PATCH https://github.com/xiph/rnnoise/issues/222
+Patch0:         372f7b4.patch
 BuildRequires:	autoconf automake libtool make
 BuildRequires:	doxygen graphviz
 BuildRequires:	gettext
@@ -35,11 +39,12 @@ This package includes the development files for %{name}.
 
 %prep
 %autosetup -n %{name}-v%{version} -p1
+%build
+cp -p %{SOURCE1} .
 autoreconf -fiv
 %configure \
 	--enable-examples-build
 
-%build
 %make_build
 
 %install
