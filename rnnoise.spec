@@ -15,6 +15,8 @@ Source0:	https://gitlab.xiph.org/xiph/rnnoise/-/archive/v%{version}/rnnoise-v%{v
 Source1:	https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz
 # PATCH https://github.com/xiph/rnnoise/issues/222
 Patch0:         372f7b4.patch
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf automake libtool make
 BuildRequires:	doxygen graphviz
 BuildRequires:	gettext
